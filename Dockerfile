@@ -14,12 +14,6 @@ WORKDIR /mongoku
 
 COPY ./ /mongoku
 
-RUN apk add --no-cache --virtual \
-        lcms2-dev libpng-dev bash \
-        git \
-        openssh \
-        make \
-        g++
 RUN npm install -g node-gyp
 RUN npm install -g node-sass
 RUN npm install -g typescript@4.5.4 @angular/cli \
