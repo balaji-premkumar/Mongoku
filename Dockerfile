@@ -14,15 +14,13 @@ WORKDIR /mongoku
 
 COPY ./ /mongoku
 
-RUN npm install -g node-gyp
-RUN npm install -g node-sass
-RUN npm install -g typescript@4.5.4 @angular/cli \
-      && npm ci \
-      && cd app \
-      && npm ci \
-      && ng build --configuration production \
-      && cd .. \
-      && tsc
+RUN npm install -g typescript@4.5.4 @angular/cli
+RUN npm install
+RUN cd app
+RUN npm install
+RUN ng build --configuration production
+RUN cd ..
+RUN tsc
 
 EXPOSE 3100
 
