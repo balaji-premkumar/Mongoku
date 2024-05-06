@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:18.20.2
 
 ENV UID=991 GID=991
 
@@ -15,11 +15,13 @@ WORKDIR /mongoku
 COPY ./ /mongoku
 
 RUN npm install -g typescript@4.5.4 @angular/cli
-RUN npm install
-RUN cd app
+
+WORKDIR /mongoku/app
 RUN npm install
 RUN ng build --configuration production
-RUN cd ..
+
+WORKDIR /mongoku
+RUN npm install
 RUN tsc
 
 EXPOSE 3100
